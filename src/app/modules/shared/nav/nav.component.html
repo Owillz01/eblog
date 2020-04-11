@@ -1,0 +1,20 @@
+<!-- <ngx-headroom> -->
+<nav class="navbar navbar-light bg-light justify-content-between">
+  <a class="navbar-brand" routerLink="">eBlog</a>
+  <div class="justify-content-between">
+    <!-- <button routerLink="" class="btn  my-2 my-sm-0" type="submit">Home</button> -->
+    <!-- <a routerLink="login">signupmnm</a> -->
+    <span *ngIf="!token">
+    	<a routerLink="/signup" class="btn  my-2 my-sm-0" (click)="clickME()">Sign up</a>
+    	<a routerLink="/signin" class="btn my-2 my-sm-0" (click)="clickME()">Sign in</a>
+    </span>
+    <span *ngIf="token">
+    	<a routerLink="" class="btn  my-2 my-sm-0" >New Article</a>
+    	<a routerLink="" class="btn  my-2 my-sm-0" >Settings</a>
+    	<a routerLink="" class="btn  my-2 my-sm-0" >admin</a>
+    	<a routerLink="" class="btn  my-2 my-sm-0" >Sign out</a>
+    </span>
+  </div>
+</nav>
+<!-- </ngx-headroom> -->
+<!-- <a routerLink="login">signupmnm</a>a -->
