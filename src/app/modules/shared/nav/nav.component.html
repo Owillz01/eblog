@@ -9,10 +9,10 @@
     	<a routerLink="/signin" class="btn my-2 my-sm-0" (click)="clickME()">Sign in</a>
     </span>
     <span *ngIf="token">
-    	<a routerLink="" class="btn  my-2 my-sm-0" >New Article</a>
+    	<a routerLink="" class="btn  my-2 my-sm-0" (click)="navToCreate()" ><span class="new_article"><img src="../../../../assets/icons/add_new.png"  alt="">New Article</span></a>
     	<a routerLink="" class="btn  my-2 my-sm-0" >Settings</a>
     	<a routerLink="" class="btn  my-2 my-sm-0" >admin</a>
-    	<a routerLink="" class="btn  my-2 my-sm-0" >Sign out</a>
+    	<a routerLink="" class="btn  my-2 my-sm-0" routerLink="" (click)="logout()">Sign out</a>
     </span>
   </div>
 </nav>

@@ -13,4 +13,9 @@ export class ArticleService {
   	const url = `${this.baseUrl}/articles`;
   	return this.http.get(url)
   }
+
+  createArticle(data): Observable<any>{
+  	const url = `${this.baseUrl}/articles`;
+  	return this.http.post(url, data)
+  }
 }

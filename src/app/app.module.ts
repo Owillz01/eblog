@@ -15,6 +15,7 @@ import { CoreModule } from './modules/core/core.module';
 import { AuthInterceptor } from './modules/core/interceptors/auth-interceptor';
 import {AuthService} from './modules/core/services/authService/auth.service';
 import { ProfileModule } from './modules/profile/profile.module'
+import { EditorModule } from './modules/editor/editor.module';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { ProfileModule } from './modules/profile/profile.module'
     HomeModule,
     AuthModule,
     CoreModule,
-    ProfileModule
+    ProfileModule,
+    EditorModule
   ],
   providers: [AuthService,
   { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}

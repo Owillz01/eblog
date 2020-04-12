@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router} from '@angular/router';
-import {Observable} from 'rxjs'
+import {Observable, Subscription} from 'rxjs'
 import {FormGroup, FormControl, Validators} from '@angular/forms';
 // import {HttpClient}
 
@@ -12,7 +12,7 @@ import { newUser } from '../../core/Models/newuser.model'
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css']
 })
-export class SignupComponent implements OnInit {
+export class SignupComponent implements OnInit, OnDestroy {
 
   constructor(private router : Router, private authService : AuthService) { }
 
@@ -22,6 +22,8 @@ export class SignupComponent implements OnInit {
   	password : new FormControl('', Validators.required)
   })
  
+  _subscribe : Subscription;
+
   signUp(data: newUser){
   	let _user = {'user' : {
   		'username' : data.userName,
@@ -32,7 +34,7 @@ export class SignupComponent implements OnInit {
 
 
 //TODO>>>> ADD A TOAST TO INDICATE TO THE USER THAT THE REGITRATION WAS SUCCESSFUL. 
-  	this.authService.createUser(_user)
+  	this._subscribe = this.authService.createUser(_user)
   	.subscribe( _resData => {
   		// localStorage.setItem('token')
   		if(_resData.user.token){
@@ -51,6 +53,12 @@ export class SignupComponent implements OnInit {
   	this.router.navigateByUrl('signin')
   }
   ngOnInit() {
+  }
+
+   ngOnDestroy(){
+    if(this._subscribe){
+      this._subscribe.unsubscribe()
+    }
   }
 
 }

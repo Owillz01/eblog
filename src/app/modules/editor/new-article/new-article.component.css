@@ -1,0 +1,12 @@
+.btn-primary{
+	background: purple !important;
+	color: white;
+	border-color: purple !important;
+	text-align: 
+}
+section{
+	display: flex;
+	-webkit-box-align: center;
+	align-items: center;
+	height: 80vh;
+}

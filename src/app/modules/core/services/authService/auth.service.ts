@@ -10,6 +10,9 @@ import { newUser} from '../../Models/newuser.model';
 export class AuthService {
   baseUrl = 'https://eblog-api.encentrals.com/api';
 
+  public token : string;
+  // global token2 : string;
+
   constructor(private http : HttpClient) { }
 
   createUser(userData): Observable<any>{
@@ -21,5 +24,9 @@ export class AuthService {
   	const url = `${this.baseUrl}/users/login`;
   	return this.http.post(url, userData)
   }
+
+  // getToken(){
+  //  this.token = localStorage.getItem('token')
+  // }
   
 }
