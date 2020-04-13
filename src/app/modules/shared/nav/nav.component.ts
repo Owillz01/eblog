@@ -12,25 +12,28 @@ export class NavComponent implements OnInit {
 loggedIn;
   constructor(private router: Router) { }
   token: string;
+  user: string;
 
   navToCreate(){
   	this.router.navigateByUrl('new')
   }
 
-  getToken(){
+  getUserDetails(){
     this.token = localStorage.getItem('token')
+    this.user = localStorage.getItem('user')
   }
   // navToEdit(){
   // 	this.router.navigateByUrl('edit')
   // }
   logout(){
     localStorage.removeItem('token')
-    this.getToken()
+    localStorage.removeItem('user')
+    this.getUserDetails()
     this.router.navigateByUrl('')
   }
   ngOnInit() {
-    this.getToken()
-  	console.log(this.token)
+    this.getUserDetails()
+  	// console.log(this.token)
   }
 
 }

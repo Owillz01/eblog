@@ -34,7 +34,9 @@ export class LoginComponent implements OnInit, OnDestroy {
       if(_resData.user.token){
         //if the registration was successful, the user is navigated to the login page.
         let token = _resData.user.token;
+        let user = _resData.user.username;
         localStorage.setItem('token', token);
+        localStorage.setItem('user', user);
         this.router.navigateByUrl('');
       }
     })

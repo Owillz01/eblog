@@ -1,0 +1,76 @@
+<div *ngFor="let val of article">
+	<section  class="header__band">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					
+					<h3>{{val.article.title}}</h3>
+				
+				</div>
+				<div class="col mt-4">
+					<div class="row ">
+						<div class="col-2">
+							<div class="row">
+								<div class="col-md-6 dp__container"> 
+									<img src="../../../assets/dp/dp.png" alt="display picture" class=".dp__img"> 
+								</div>
+								<!-- <div class="col-6"> -->
+									<!-- <div> -->
+										<span>
+											<p class="username">{{val.article.author.username}}</p>
+											<p class="date">{{val.article.createdAt | date :"mediumDate"}}</p>
+										</span>
+									<!-- </div> -->
+									<!-- <div></div> -->
+								<!-- </div> -->
+							</div>
+						</div>
+						<div class=" span__favorite">
+							<span *ngIf="!val.article.favorited " ><img src="../../../../assets/icons/love.svg" alt=""></span>
+							<span *ngIf="val.article.favorited " ><img src="../../../../assets/icons/passion.svg" alt=""></span>
+							<span> Favorite {{val.article.favoritesCount}} </span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="container">
+		<section class="body">
+			<div class="container">
+					<!-- <hr> -->
+				<!-- <div *ngFor="let article of articles"> -->
+					<div class="row">
+						
+						<div class="col">
+							
+							<div class="row mt-4 justify-content-between">
+								<div class="col">
+									
+									<p class="article__body">
+									</p>
+								</div>
+								
+								<!-- <div class="col-2"><span>Covid-19</span></div> -->
+							</div>
+							<div class="row justify-content-between">
+								
+								<div >
+									<span class="tag__span" *ngFor="let tag of val.article.tagList">{{tag}}</span> 
+
+								</div>
+								<div class="float-right" *ngIf="isLogged">
+									<!-- <button class="btn btn__edit" (click)="navToEdit()">Edit</button> -->
+									<button class="btn btn__edit" (click)="editArticle(val.article.slug)">Edit</button>
+									<button class="btn btn__delete" (click)="deleteArticle(val.article.slug)">Delete</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<hr>
+				<!-- </div> -->
+			</div>
+		</section>
+	</section>
+</div>

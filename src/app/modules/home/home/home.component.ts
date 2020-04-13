@@ -1,6 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import {  Subscription} from 'rxjs';
+import {Router } from '@angular/router'
+
+
 import { ArticleService } from '../../core/services/articleService/article.service';
-import {  Subscription} from 'rxjs'
 // import {Observable, Subscription} from 'rxjs'
 
 
@@ -11,7 +14,7 @@ import {  Subscription} from 'rxjs'
 })
 export class HomeComponent implements OnInit, OnDestroy {
 
-  constructor( private articleService : ArticleService) { }
+  constructor( private articleService : ArticleService, private router : Router) { }
 
  subscribe : Subscription;
  articles ;
@@ -28,6 +31,17 @@ export class HomeComponent implements OnInit, OnDestroy {
   	})
   }
 
+  navToArticle(slug){
+    this.articleService.getArticle(slug)
+    .subscribe( data => {
+      this.articleService.article = data;
+      if (this.articleService.article) {
+        // code...
+          this.router.navigateByUrl('article')
+      }
+      // console.log(data)
+    })
+  }
   
   ngOnDestroy(){
   	this.subscribe.unsubscribe()

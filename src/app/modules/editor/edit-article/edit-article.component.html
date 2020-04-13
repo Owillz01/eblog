@@ -1,1 +1,28 @@
-<p>edit-article works!</p>
+<section>
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-md-6 " *ngFor="let item of oldArticle">
+				<!-- data.article.author.username -->
+				<form [formGroup]="editArticle" (ngSubmit)="updateArticle(item.article.slug, editArticle.value)">
+					<div class="form-group">
+						<input type="text" class="form-control form-control-lg" formControlName="title" placeholder="title" value="{{item.article.title}}" >
+					</div>
+
+					<div class="form-group">
+						<input type="text" class="form-control  form-control-lg" formControlName="description" placeholder="what is the article about?" value="{{item.article.description}}">
+					</div>
+
+					<div class="form-group">
+					   <textarea class="form-control" formControlName="body" rows="3" value="{{item.article.body}}"> </textarea>
+					 </div>
+
+					<div class="form-group form-group-lg" >
+						<input type="text" class="form-control form-control-lg" formControlName="tags" placeholder="enter your tags" value="{{item.article.tagList}}">
+					</div>
+					<input type="submit" value="Update"  class="btn btn-primary float-right">
+				</form>
+			</div>
+		</div>
+	</div>
+</section>
+

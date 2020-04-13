@@ -88,7 +88,7 @@
 						</div>
 						<div class="row justify-content-between">
 							<div class="col-2 read_more">
-								<span>Read More...</span>
+								<span (click)="navToArticle(article.slug)">Read More...</span>
 							</div>
 							<div class="float-right" >
 								<span class="tag__span" *ngFor="let tag of article.tagList">{{tag}}</span> 
