@@ -43,103 +43,71 @@
 		<div class="container">
 			<div class="row mt-5">
 				<!-- <div class="col-3"> -->
-					<button>Your Feeds</button>
+					<button (click)="personalFeeds()">Your Feeds</button>
 				<!-- </div> -->
 				<!-- <div class="col-3"> -->
-					<button> Global Feed</button>
+					<button (click)="globalFeeds()"> Global Feed</button>
 				<!-- </div> -->
 			</div>
 				<hr>
-			<div *ngFor="let article of articles">
-				<div class="row">
-					
-					<div class="col">
-						<div class="row justify-content-between">
-							<div class="col-2">
-								<div class="row">
-									<div class="col-md-6 dp__container"> 
-										<img src="../../../assets/dp/dp.png" alt="display picture" class=".dp__img"> 
-									</div>
-									<!-- <div class="col-6"> -->
-										<!-- <div> -->
-											<span>
-												<p class="username">{{article.author.username}}</p>
-												<p class="date">{{article.createdAt  | date : "mediumDate" }}</p>
-											</span>
-										<!-- </div> -->
-										<!-- <div></div> -->
-									<!-- </div> -->
-								</div>
-							</div>
-							<div class="col-md-1 span__favorite">
-								<span *ngIf="!article.favorited " ><img src="../../../../assets/icons/love.svg" alt=""></span>
-								<span *ngIf="article.favorited " ><img src="../../../../assets/icons/passion.svg" alt=""></span>
-								<span>{{article.favoritesCount}}</span>
-							</div>
-						</div>
-						<div class="row justify-content-between">
-							<div class="col-md-8">
-								<h3>{{article.title}}</h3>
-								<p class="article__body"> {{article.body}}
-								</p>
-							</div>
-							
-							<!-- <div class="col-2"><span>Covid-19</span></div> -->
-						</div>
-						<div class="row justify-content-between">
-							<div class="col-2 read_more">
-								<span (click)="navToArticle(article.slug)">Read More...</span>
-							</div>
-							<div class="float-right" >
-								<span class="tag__span" *ngFor="let tag of article.tagList">{{tag}}</span> 
-
-							</div>
-						</div>
-					</div>
-				</div>
-				<hr>
-			</div>
-			<!-- <div>
-				<div class="row">
-					
-					<div class="col">
-						<div class="row justify-content-between">
-							<div class="col-2">
-								<div class="row">
-									<div class="col-md-6 dp__container"> 
-										<img src="../../../assets/dp/dp.png" alt="display picture" class=".dp__img"> 
-									</div>
-									
-											<span>
-												<p class="username">Admin</p>
-												<p class="date">April 1, 2020</p>
-											</span>
-										
-								</div>
-							</div>
-							<div class="col-md-1 span__favorite">
-								<span>favorite</span>
-							</div>
-						</div>
-						<div class="row justify-content-between">
-							<div class="col-md-8">
-								<h3>Article title is display here for all to see.</h3>
-								<p class="article__body"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste odit excepturi consectetur libero maiores dicta, 	perferendis temporibus iusto, facilis rem animi, repellat minus quod magni amet illo? Expedita, debitis velit?
-								</p>
-							</div>
-							
-							
-						</div>
-						<div class="row justify-content-between">
-							<div class="col-2 read_more">
-								<span>Read More...</span>
-							</div>
-							<div class="float-right"><span class="tag__span">Virus</span> <span class="tag__span">Covid-19</span></div>
-						</div>
-					</div>
-				</div>
-				<hr>
-			</div> -->
+			<!-- feeds here -->
+			<span *ngIf="feeds=='personal'">
+				
+				<personal-feeds></personal-feeds>
+			</span>
+			<span  *ngIf="feeds=='global'">
+				
+			 <global-feeds></global-feeds>
+			</span>
+			<!-- feeds ends here -->
+		
 		</div>
 	</section>
 </section>
+
+
+<!-- <div *ngFor="let article of articles">
+	<div class="row">
+		
+		<div class="col">
+			<div class="row justify-content-between">
+				<div class="col-2">
+					<div class="row">
+						<div class="col-md-6 dp__container"> 
+							<img src="../../../assets/dp/dp.png" alt="display picture" class=".dp__img"> 
+						</div>
+						
+								<span>
+									<p class="username">{{article.author.username}}</p>
+									<p class="date">{{article.createdAt  | date : "mediumDate" }}</p>
+								</span>
+							
+					</div>
+				</div>
+				<div class="col-md-1 span__favorite">
+					<span *ngIf="!article.favorited " ><img src="../../../../assets/icons/love.svg" alt=""></span>
+					<span *ngIf="article.favorited " ><img src="../../../../assets/icons/passion.svg" alt=""></span>
+					<span>{{article.favoritesCount}}</span>
+				</div>
+			</div>
+			<div class="row justify-content-between">
+				<div class="col-md-8">
+					<h3>{{article.title}}</h3>
+					<p class="article__body"> {{article.body}}
+					</p>
+				</div>
+				
+			</div>
+			<div class="row justify-content-between">
+				<div class="col-2 read_more">
+					<span (click)="navToArticle(article.slug)">Read More...</span>
+				</div>
+				<div class="float-right" >
+					<span class="tag__span" *ngFor="let tag of article.tagList">{{tag}}</span> 
+
+				</div>
+			</div>
+		</div>
+	</div>
+	<hr>
+</div> -->

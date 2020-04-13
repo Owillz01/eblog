@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {  Subscription} from 'rxjs';
 import {Router } from '@angular/router'
 
@@ -12,39 +12,32 @@ import { ArticleService } from '../../core/services/articleService/article.servi
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit, OnDestroy {
+export class HomeComponent implements OnInit {
 
   constructor( private articleService : ArticleService, private router : Router) { }
 
  subscribe : Subscription;
  articles ;
  fav : boolean = true;
-
+feeds : string ='global';
  favArticle(){
  	this.fav = !this.fav;
   }
-  ngOnInit() {
-  	this.subscribe = this.articleService.getArticles()
-  	.subscribe(_articles =>{
-  		this.articles = _articles.articles;
-  		console.log(_articles)
-  	})
+
+  globalFeeds(){
+    this.feeds = 'global';
   }
 
-  navToArticle(slug){
-    this.articleService.getArticle(slug)
-    .subscribe( data => {
-      this.articleService.article = data;
-      if (this.articleService.article) {
-        // code...
-          this.router.navigateByUrl('article')
-      }
-      // console.log(data)
-    })
+  personalFeeds(){
+    this.feeds = 'personal';
   }
+
+  ngOnInit() {
+  	
+  }
+
   
-  ngOnDestroy(){
-  	this.subscribe.unsubscribe()
-  }
+  
+  
 
 }

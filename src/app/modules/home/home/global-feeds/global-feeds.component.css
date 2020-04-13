@@ -1,0 +1,46 @@
+
+.col-md-6.dp__container{
+	padding-right: 0px;
+	width: 100%
+}
+img{
+	width: 100%;
+}
+.username{
+	font-weight: bold;
+	font-size: 12px;
+	color: #907cff;
+	margin: 20px auto auto 10px;
+}
+.date{
+	color: gray;
+	font-size: 10px;
+	margin: auto auto auto 10px;
+}
+
+.span__favorite{
+	align-self: center;
+	border: 1px solid #907cff;
+	border-radius: 10px;
+}
+
+.span__favorite img{
+	width: 25px;
+	padding-right: 5px;
+}
+.article__body{
+	color: grey;
+}
+
+.read_more{
+	font-size: 14px;
+	color: grey;
+	cursor: pointer;
+}
+.tag__span{
+	align-self: center;
+	border: 1px solid #907cff;
+	border-radius: 10px;
+	padding: 0px 5px 0px 5px;
+	margin-right: 5px;
+}

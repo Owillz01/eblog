@@ -46,4 +46,10 @@ export class ArticleService {
   	return this.http.put(url, editedData)
   }
 
+  // FAV AN ARTICLE
+  createArticleFavorite(slug): Observable<any>{
+    const url = `${this.baseUrl}/articles/${slug}/favorite`; 
+    const slugUrl = `${this.baseUrl}/articles/${slug}`; 
+    return this.http.post(url, slugUrl)
+  }
 }

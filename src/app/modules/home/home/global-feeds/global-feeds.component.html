@@ -1,0 +1,45 @@
+<div *ngFor="let article of articles">
+	<div class="row">
+		
+		<div class="col">
+			<div class="row justify-content-between">
+				<div class="col-2">
+					<div class="row">
+						<div class="col-md-6 dp__container"> 
+							<img src="../../../assets/dp/dp.png" alt="display picture" class=".dp__img"> 
+						</div>
+						
+								<span>
+									<p class="username">{{article.author.username}}</p>
+									<p class="date">{{article.createdAt  | date : "mediumDate" }}</p>
+								</span>
+							
+					</div>
+				</div>
+				<div class="col-md-1 span__favorite" (click)="createArticleFavorite(article.slug)" >
+					<span *ngIf="!article.favorited " ><img src="../../../../assets/icons/love.svg" alt=""></span>
+					<span *ngIf="article.favorited " ><img src="../../../../assets/icons/passion.svg" alt=""></span>
+					<span>{{article.favoritesCount}}</span>
+				</div>
+			</div>
+			<div class="row justify-content-between">
+				<div class="col-md-8">
+					<h3>{{article.title}}</h3>
+					<p class="article__body"> {{article.body}}
+					</p>
+				</div>
+				
+			</div>
+			<div class="row justify-content-between">
+				<div class="col-2 read_more">
+					<span (click)="navToArticle(article.slug)">Read More...</span>
+				</div>
+				<div class="float-right" >
+					<span class="tag__span" *ngFor="let tag of article.tagList">{{tag}}</span> 
+
+				</div>
+			</div>
+		</div>
+	</div>
+	<hr>
+</div>
