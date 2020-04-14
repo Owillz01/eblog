@@ -1,0 +1,49 @@
+<section class="content">
+	<section class="header__band">
+		<div class="container ">
+			<!-- <div class="row "> -->
+				<div class="dp">
+					<img src="../../../../assets/dp/dp.png">
+				</div>
+				<div class="username">
+					<p>{{user.user}}</p>
+				</div>
+			<!-- </div> -->
+		</div>
+	</section>
+
+	<section class="parent__container">
+		
+		<section class="body" >
+			<div class="container">
+				<div class="row mt-5">
+					<div class="col">
+						{{user.bio}}
+					</div>
+				</div>
+					<hr>
+					<br><br>
+				<!-- feeds here -->
+				<!-- <span *ngIf="isSelected=='favs' " >
+					<app-favorited></app-favorited>				
+				</span>
+				<span *ngIf="isSelected=='personal' " >
+					<app-my-posts></app-my-posts>			 
+				</span>
+				 -->
+				 <div *ngIf="loggedUser != user.username">
+				 	 <div *ngIf="!followed">
+				 		 <button class="btn follow" (click)="followUserByUsername(user.username)"> follow</button>
+				 	 </div>
+				 	 <div *ngIf="followed">
+				 		 <button class="btn btn-danger" (click)="unfollowUserByUsername(user.username)"> unfollow</button>
+				 	 </div>
+				 </div>
+				 
+				<!-- feeds ends here -->
+			
+			</div>
+		</section>
+	</section>
+
+</section>

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs'
 import { HttpClient} from '@angular/common/http';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -51,5 +52,18 @@ export class ArticleService {
     const url = `${this.baseUrl}/articles/${slug}/favorite`; 
     const slugUrl = `${this.baseUrl}/articles/${slug}`; 
     return this.http.post(url, slugUrl)
+  }
+
+  
+  deleteArticleFavorite(slug): Observable<any>{
+    const url = `${this.baseUrl}/articles/${slug}/favorite`; 
+    // const slugUrl = `${this.baseUrl}/articles/${slug}`; 
+    return this.http.delete(url)
+  }
+
+  // GET TAGS
+  tagsGet():Observable<any>{
+    const url = `${this.baseUrl}/tags`;
+    return this.http.get(url);
   }
 }

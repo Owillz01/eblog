@@ -5,20 +5,20 @@
 			<div class="row justify-content-between">
 				<div class="col-2">
 					<div class="row">
-						<div class="col-md-6 dp__container"> 
+						<div class="col-md-6 dp__container" (click)="navToUser(article.author.username)"> 
 							<img src="../../../assets/dp/dp.png" alt="display picture" class=".dp__img"> 
 						</div>
 						
 								<span>
-									<p class="username">{{article.author.username}}</p>
+									<p class="username" (click)="navToUser(article.author.username)">{{article.author.username}}</p>
 									<p class="date">{{article.createdAt  | date : "mediumDate" }}</p>
 								</span>
 							
 					</div>
 				</div>
-				<div class="col-md-1 span__favorite" (click)="createArticleFavorite(article.slug)" >
-					<span *ngIf="!article.favorited " ><img src="../../../../assets/icons/love.svg" alt=""></span>
-					<span *ngIf="article.favorited " ><img src="../../../../assets/icons/passion.svg" alt=""></span>
+				<div class="col-md-1 span__favorite"  >
+					<span *ngIf="!article.favorited || fav " (click)="createArticleFavorite(article.slug)"><img src="../../../../assets/icons/love.svg" alt=""></span>
+					<span *ngIf="article.favorited || fav " (click)="deleteArticleFavorite(article.slug)" ><img src="../../../../assets/icons/passion.svg" alt=""></span>
 					<span>{{article.favoritesCount}}</span>
 				</div>
 			</div>

@@ -17,6 +17,7 @@ import {AuthService} from './modules/core/services/authService/auth.service';
 import { ProfileModule } from './modules/profile/profile.module';
 import { ArticleModule } from './modules/article/article.module';
 import { EditorModule } from './modules/editor/editor.module';
+import { SettingsModule } from './modules/settings/settings.module';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { EditorModule } from './modules/editor/editor.module';
     CoreModule,
     ProfileModule,
     EditorModule,
-    ArticleModule
+    ArticleModule,
+    SettingsModule
   ],
   providers: [AuthService,
   { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}

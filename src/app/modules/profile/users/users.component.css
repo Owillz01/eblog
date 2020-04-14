@@ -1,13 +1,6 @@
-.sidebar{
-	max-width: 20%;
-	background: #eaeaea;
-	padding: 30px 10px;
+.content{
+	height: 95%;
 }
-
-.body{
-	max-width: 75%;
-}
-
 .parent__container{
 	margin: 0px 5%;
 }
@@ -20,15 +13,19 @@
 h2{
 	font-weight: bold;
 }
-button{
-	background: none;
+.follow{
+	
+	background: #503eb9;
+	color: white;
 	border:none;
-	color: #9b9999;
 	font-size: 15px;
 	padding: 5px 5px 10px;
 	font-weight: bold;
 }
-button:active, button:hover{
+
+.follow:active, .follow:hover{
+	background: none;
+	font-weight: bold;
 	border-bottom: 5px solid #907cff;
 	color: #907cff;
 }
@@ -41,11 +38,16 @@ button:active, button:hover{
 img{
 	width: 100%;
 }
+
+.dp{
+	max-width: 40px;
+	margin: auto;
+}
 .username{
 	font-weight: bold;
-	font-size: 12px;
-	color: #907cff;
-	margin: 20px auto auto 10px;
+	font-size: 20px;
+	color: white;
+	margin: auto;
 }
 .date{
 	color: gray;

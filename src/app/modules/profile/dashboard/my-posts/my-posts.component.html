@@ -1,0 +1,48 @@
+<section *ngFor="let post of myPosts">
+	<div *ngIf="post.author.username == user">
+		<div class="row" >
+			
+			<div class="col">
+				<div class="row justify-content-between">
+					<div class="col-2">
+						<div class="row">
+							<div class="col-md-6 dp__container"> 
+								<img src="../../../assets/dp/dp.png" alt="display picture" class=".dp__img"> 
+							</div>
+							
+									<span>
+										<p class="username">{{post.author.username}}</p>
+										<p class="date">{{post.createdAt  | date : "mediumDate" }}</p>
+									</span>
+								
+						</div>
+					</div>
+					<div class="col-md-1 span__favorite"  >
+						<span *ngIf="!post.favorited || fav " (click)="createArticleFavorite(article.slug)"><img src="../../../../assets/icons/love.svg" alt=""></span>
+						<span *ngIf="post.favorited || fav " (click)="deleteArticleFavorite(article.slug)" ><img src="../../../../assets/icons/passion.svg" alt=""></span>
+						<span>{{post.favoritesCount}}</span>
+					</div>
+				</div>
+				<div class="row justify-content-between">
+					<div class="col-md-8">
+						<h3>{{post.title}}</h3>
+						<p class="article__body"> {{post.body}}
+						</p>
+					</div>
+					
+				</div>
+				<div class="row justify-content-between">
+					<div class="col-2 read_more">
+						<span (click)="navToArticle(post.slug)">Read More...</span>
+					</div>
+					<div class="float-right" >
+						<span class="tag__span" *ngFor="let tag of post.tagList">{{tag}}</span> 
+
+					</div>
+				</div>
+			</div>
+		</div>
+			<hr>
+		
+	</div>
+</section>

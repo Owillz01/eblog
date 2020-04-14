@@ -8,7 +8,8 @@ import { DashboardComponent } from './modules/profile/dashboard/dashboard.compon
 import {NewArticleComponent } from './modules/editor/new-article/new-article.component'
 import {EditArticleComponent } from './modules/editor/edit-article/edit-article.component';
 import { ArticleComponent } from './modules/article/article/article.component';
-// import { EditComponent } from './modules/article/edit/edit.component';
+import { SettingsComponent } from './modules/settings/settings.component';
+import { UsersComponent } from './modules/profile/users/users.component';
 
 const routes: Routes = [
 	{path: '', component : HomeComponent},
@@ -16,9 +17,10 @@ const routes: Routes = [
 	{path: 'signin', component : LoginComponent},
 	{path: 'new', component: NewArticleComponent},
 	{ path: 'edit', component: EditArticleComponent },
-	{path: 'profile', component : LoginComponent},
+	{path: 'profile', component : DashboardComponent},
 	{path: 'article', component: ArticleComponent},
-	// {path: 'edit', component: EditComponent}
+	{path: 'settings', component: SettingsComponent},
+	{path: 'user', component: UsersComponent}
 
 
 ];

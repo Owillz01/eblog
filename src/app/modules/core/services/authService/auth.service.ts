@@ -11,7 +11,7 @@ export class AuthService {
   baseUrl = 'https://eblog-api.encentrals.com/api';
 
   public token : string;
-  // global token2 : string;
+  public user;
 
   constructor(private http : HttpClient) { }
 
@@ -23,6 +23,34 @@ export class AuthService {
   login(userData):Observable<any>{
   	const url = `${this.baseUrl}/users/login`;
   	return this.http.post(url, userData)
+  }
+
+  getCurrentUser():Observable<any>{
+    const url = `${this.baseUrl}/user`;
+    return this.http.get(url)
+  }
+
+  updateCurrentUser(userData):Observable<any>{
+    const url = `${this.baseUrl}/user`;
+    return this.http.put(url, userData)
+  }
+
+  // GET USER'S PROFILE DETAILS
+
+  getProfileByUsername(username) : Observable<any>{
+    const url = `${this.baseUrl}/profiles/${username}`;
+    return this.http.get(url)
+  }
+
+  followUserByUsername(username): Observable<any>{
+    const url = `${this.baseUrl}/profiles/${username}/follow`;
+    const user = `${this.baseUrl}/profiles/${username}`;
+    return this.http.post(url, user)
+  }
+
+  unfollowUserByUsername(username){
+    const url = `${this.baseUrl}/profiles/${username}/follow`;
+    return this.http.delete(url)
   }
 
   // getToken(){

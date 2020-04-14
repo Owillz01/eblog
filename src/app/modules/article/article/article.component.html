@@ -49,6 +49,7 @@
 								<div class="col">
 									
 									<p class="article__body">
+										{{val.article.body}}
 									</p>
 								</div>
 								
@@ -58,8 +59,8 @@
 								
 								<div >
 									<span class="tag__span" *ngFor="let tag of val.article.tagList">{{tag}}</span> 
-
 								</div>
+								
 								<div class="float-right" *ngIf="isLogged">
 									<!-- <button class="btn btn__edit" (click)="navToEdit()">Edit</button> -->
 									<button class="btn btn__edit" (click)="editArticle(val.article.slug)">Edit</button>
