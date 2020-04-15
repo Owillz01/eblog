@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+// import { FormsModule } from '@angular/forms'
+
 import {AuthService} from './services/authService/auth.service'
 
 
@@ -10,7 +12,7 @@ import {AuthService} from './services/authService/auth.service'
   declarations: [],
   imports: [
     CommonModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: []
 })

@@ -1,4 +1,4 @@
-<div *ngFor="let article of articles">
+<div *ngFor="let article of articles | paginate: { itemsPerPage: 20, currentPage: p }">
 	<div class="row">
 		
 		<div class="col">
@@ -43,3 +43,10 @@
 	</div>
 	<hr>
 </div>
+	<pagination-controls 
+	(pageChange)="p = $event"
+	previousLabel=""
+	nextLabel=""
+	class="my-pagination"
+
+	></pagination-controls>

@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { NgxSpinnerModule } from "ngx-spinner";
-import {NgxPaginationModule} from 'ngx-pagination';
+// import {NgxPaginationModule} from 'ngx-pagination';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import {SharedModule} from './modules/shared/shared.module';
@@ -30,7 +30,7 @@ import { SettingsModule } from './modules/settings/settings.module';
     NgbModule,
     SharedModule,
     NgxSpinnerModule,
-    NgxPaginationModule,
+    // NgxPaginationModule,
     HomeModule,
     AuthModule,
     CoreModule,

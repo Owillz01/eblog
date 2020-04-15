@@ -18,9 +18,9 @@ const routes: Routes = [
 	{path: 'new', component: NewArticleComponent},
 	{ path: 'edit', component: EditArticleComponent },
 	{path: 'profile', component : DashboardComponent},
-	{path: 'article', component: ArticleComponent},
+	{path: 'article/:slug', component: ArticleComponent},
 	{path: 'settings', component: SettingsComponent},
-	{path: 'user', component: UsersComponent}
+	{path: 'user/:username', component: UsersComponent}
 
 
 ];

@@ -46,3 +46,11 @@ img{
 	padding: 0px 5px 0px 5px;
 	margin-right: 5px;
 }
+
+.my-pagination /deep/ .ngx-pagination .current {
+	background: #907cff;
+}
+
+.my-pagination /deep/ .ngx-pagination  {
+	color: #907cff;
+}

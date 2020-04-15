@@ -1,0 +1,31 @@
+<div *ngFor="let comment of comments | paginate: { itemsPerPage: 20, currentPage: p }">
+	<div >
+		<div class=" dp__container" (click)="navToUser(comment.author.username)"> 
+			<img src="../../../assets/dp/dp.png" alt="display picture" class=".dp__img"> 
+		</div>
+		<!-- <img src="../../../../assets/dp/dp.png" alt="" class=".dp__img"> -->
+		<!-- <div class="float-left"> -->
+			<p  class="username">{{comment.author.username}}</p>
+			<p class="date"> {{comment.createdAt | date : 'mediumDate'}} </p>
+			<div *ngIf="user != comment.author.username">
+				<button class="follow" *ngIf="!follow"> follow</button>
+				<button class="unfollow" *ngIf="followed"> unfollow</button>
+			</div>
+			<button class="delete" (click)="deleteArticleComment(comment.id)" *ngIf="user == comment.author.username" > Delete</button>
+		<!-- </div> -->
+	</div>
+	<div>
+		<p class="article__body">
+			{{comment.body}}
+		</p>
+	</div>
+<hr>
+</div>
+
+<pagination-controls 
+	(pageChange)="p = $event"
+	previousLabel=""
+	nextLabel=""
+	class="my-pagination"
+
+	></pagination-controls>

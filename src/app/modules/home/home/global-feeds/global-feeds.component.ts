@@ -18,30 +18,22 @@ export class GlobalFeedsComponent implements OnInit, OnDestroy {
   articles ;
   favCount;
   fav;
+  p: number = 1;
   favorited : boolean;
   navToArticle(slug){
-   this.subscribe = this.articleService.getArticle(slug)
-    .subscribe( data => {
-      this.articleService.article = data;
-      if (this.articleService.article) {
-        // code...
-          this.router.navigateByUrl('article')
-      }
-      // console.log(data)
-    })
+   // this.subscribe = this.articleService.getArticle(slug)
+   //  .subscribe( data => {
+   //    this.articleService.article = data;
+   //    if (this.articleService.article) {
+          this.router.navigate(['article', slug])
+    //   }
+    // })
   }
 
-  navToUser(username){
-   this.subscribe = this.authService.getProfileByUsername(username)
-   .subscribe(data =>{
-     if(data){
-       this.authService.user = data.profile;
-       this.router.navigateByUrl('user')
-     }
-     console.log(data)
-   })
+// VIEW USER'S DETAILS
 
-    console.log(username)
+  navToUser(username){
+       this.router.navigate(['/user', username])
   }
 
   createArticleFavorite(slug){

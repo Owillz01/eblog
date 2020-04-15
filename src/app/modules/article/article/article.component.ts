@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
-import {Router} from '@angular/router'
+import {Router, ActivatedRoute} from '@angular/router'
 
 import { ArticleService } from '../../core/services/articleService/article.service'
 
@@ -11,7 +11,7 @@ import { ArticleService } from '../../core/services/articleService/article.servi
 })
 export class ArticleComponent implements OnInit, OnDestroy {
 
-  constructor(private articleService : ArticleService, private router : Router) { }
+  constructor(private articleService : ArticleService, private router : Router, private activeRoute : ActivatedRoute) { }
   article;
   subscribe : Subscription;
   isLogged:boolean = false;
@@ -43,16 +43,37 @@ export class ArticleComponent implements OnInit, OnDestroy {
   navToEdit(){
   	this.router.navigateByUrl('edit')
   }
-   ngOnInit() {
-   	this.article = [this.articleService.article]
-   	let user = localStorage.getItem('user')
-   	// if(token == this.article.)
-   	this.article.forEach(data =>{
-   		if(user == data.article.author.username){
-   			this.isLogged = true;
-   		}
-   	})
+  //  ngOnInit() {
+  //  	this.article = [this.articleService.article]
+  //  	let user = localStorage.getItem('user')
+  //  	// if(token == this.article.)
+  //  	this.article.forEach(data =>{
+  //  		if(user == data.article.author.username){
+  //  			this.isLogged = true;
+  //  		}
+  //  	})
    	
+  // }
+
+  navToUser(username){
+       this.router.navigate(['/user', username])
+  }
+
+  ngOnInit(){
+    let user = localStorage.getItem('user');
+    let slug = this.activeRoute.snapshot.params.slug
+    this.subscribe = this.articleService.getArticle(slug)
+    .subscribe(data =>{
+      this.article = [data];
+      console.log('this is the article', this.article)
+      this.article.map(data =>{
+             if(user == data.article.author.username){
+               console.log('user logged is', this.isLogged)
+               this.isLogged = true;
+             }
+           })
+      // console.log('this is the article', this.article)
+    })
   }
 	
   ngOnDestroy(){

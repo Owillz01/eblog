@@ -1,4 +1,4 @@
-<div *ngFor="let val of article">
+<div class="body" *ngFor="let val of article">
 	<section  class="header__band">
 		<div class="container">
 			<div class="row">
@@ -11,13 +11,13 @@
 					<div class="row ">
 						<div class="col-2">
 							<div class="row">
-								<div class="col-md-6 dp__container"> 
+								<div class="col-md-6 dp__container" (click)="navToUser(val.article.author.username)"> 
 									<img src="../../../assets/dp/dp.png" alt="display picture" class=".dp__img"> 
 								</div>
 								<!-- <div class="col-6"> -->
 									<!-- <div> -->
 										<span>
-											<p class="username">{{val.article.author.username}}</p>
+											<p class="username" (click)="navToUser(val.article.author.username)" >{{val.article.author.username}}</p>
 											<p class="date">{{val.article.createdAt | date :"mediumDate"}}</p>
 										</span>
 									<!-- </div> -->
@@ -69,9 +69,31 @@
 							</div>
 						</div>
 					</div>
-					<hr>
+					<br><br>
+					<div>
+						
+						<app-newcomment></app-newcomment>
+					</div>
+
+					
+
+
 				<!-- </div> -->
 			</div>
 		</section>
+
 	</section>
+	
 </div>
+<section class="container">
+					<hr>
+
+		<div class="row">
+			<div class="col">
+			<app-comments></app-comments>
+				
+			</div>
+		</div>
+	</section>
+					<!-- <app-newcomment></app-newcomment> -->
+		

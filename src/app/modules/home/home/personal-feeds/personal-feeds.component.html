@@ -1,17 +1,17 @@
 <div *ngIf="noFeeds; then noFeeds else showFeeds"></div>
-<div #showFeeds *ngFor="let article of articles">
+<div #showFeeds *ngFor="let article of articles | paginate: { itemsPerPage: 20, currentPage: p }">
 	<div class="row">
 		
 		<div class="col">
 			<div class="row justify-content-between">
 				<div class="col-2">
 					<div class="row">
-						<div class="col-md-6 dp__container"> 
+						<div class="col-md-6 dp__container" (click)="navToUser(article.author.username)"> 
 							<img src="../../../assets/dp/dp.png" alt="display picture" class=".dp__img"> 
 						</div>
 						
 								<span>
-									<p class="username">{{article.author.username}}</p>
+									<p class="username" (click)="navToUser(article.author.username)">{{article.author.username}}</p>
 									<p class="date">{{article.createdAt  | date : "mediumDate" }}</p>
 								</span>
 							
@@ -47,3 +47,11 @@
 <ng-template #noFeeds>
 	<p>no feeds to show</p>
 </ng-template>
+
+<pagination-controls 
+	(pageChange)="p = $event"
+	previousLabel=""
+	nextLabel=""
+	class="my-pagination"
+
+	></pagination-controls>

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 import { AuthService } from '../../core/services/authService/auth.service';
 
@@ -9,10 +11,11 @@ import { AuthService } from '../../core/services/authService/auth.service';
 })
 export class UsersComponent implements OnInit {
 
-  constructor(private authService : AuthService) { }
+  constructor(private authService : AuthService, private activeRoute : ActivatedRoute) { }
 private user;
 private loggedUser;
 private followed: boolean;
+private subscribe :Subscription;
 
 	unfollowUserByUsername(username){
 		this.authService.unfollowUserByUsername(username)
@@ -32,12 +35,24 @@ private followed: boolean;
 		})
 		this.followed = true;
 	}
-  ngOnInit() {
-  	this.loggedUser = localStorage.getItem('user')
-  	this.user = this.authService.user;
-  	this.followed = this.authService.user.following;
+  // ngOnInit() {
+  // 	this.loggedUser = localStorage.getItem('user')
+  // 	this.user = this.authService.user;
+  // 	this.followed = this.authService.user.following;
 
-  	console.log(this.followed)
-  }
+  // 	console.log(this.followed)
+  // }
+
+   ngOnInit(){
+  	 	this.loggedUser = localStorage.getItem('user')
+   		let _user = this.activeRoute .snapshot.params.username;
+   		this.subscribe = this.authService.getProfileByUsername(_user)
+   		.subscribe(data => {
+   			this.user = data.profile;
+   			console.log(this.user)
+   			this.followed = data.profile.following
+   		})
+   		   
+   }
 
 }
