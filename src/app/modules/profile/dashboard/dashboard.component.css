@@ -17,13 +17,18 @@ button{
 	font-size: 15px;
 	padding: 5px 5px 10px;
 	font-weight: bold;
+	margin-right: 10px;
 }
-button:active, button:hover{
+
+button:hover{
 	border-bottom: 5px solid #907cff;
 	color: #907cff;
 }
 
-
+.active{
+	border-bottom: 5px solid #907cff;
+	color: #907cff;
+}
 .col-md-6.dp__container{
 	padding-right: 0px;
 	width: 100%
@@ -74,3 +79,6 @@ img{
 	padding: 0px 5px 0px 5px;
 	margin-right: 5px;
 }
+/*.height{
+	height: 95%;
+}*/

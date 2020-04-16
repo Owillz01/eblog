@@ -6,6 +6,7 @@
 
 .body{
 	max-width: 75%;
+	/*height: 95%;*/
 }
 
 .parent__container{
@@ -27,8 +28,14 @@ button{
 	font-size: 15px;
 	padding: 5px 5px 10px;
 	font-weight: bold;
+	margin-right: 10px;
 }
-button:active, button:hover{
+ button:hover{
+	border-bottom: 5px solid #907cff;
+	color: #907cff;
+}
+
+.active{
 	border-bottom: 5px solid #907cff;
 	color: #907cff;
 }

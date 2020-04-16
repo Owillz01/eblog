@@ -13,6 +13,8 @@ export class AuthService {
   public token : string;
   public user;
 
+  public loggedUser: string;
+
   constructor(private http : HttpClient) { }
 
   createUser(userData): Observable<any>{

@@ -20,10 +20,10 @@
 		<div class="container">
 			<div class="row mt-5">
 				<!-- <div class="col-3"> -->
-					<button (click)="personalFeeds()">Your Feeds</button>
+					<button (click)="personalFeeds()"  [class.active]="personalActive">Your Feeds</button>
 				<!-- </div> -->
 				<!-- <div class="col-3"> -->
-					<button (click)="globalFeeds()"> Global Feed</button>
+					<button (click)="globalFeeds()" [class.active]="globalActive"> Global Feed</button>
 				<!-- </div> -->
 			</div>
 				<hr>

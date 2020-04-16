@@ -12,7 +12,8 @@ import { AuthService } from '../../../core/services/authService/auth.service';
 })
 export class GlobalFeedsComponent implements OnInit, OnDestroy {
 
-  constructor(private articleService : ArticleService, private router : Router, private authService : AuthService) { }
+  constructor(private articleService : ArticleService, private router : Router, 
+              private authService : AuthService) { }
 
  subscribe : Subscription;
   articles ;
@@ -59,7 +60,6 @@ export class GlobalFeedsComponent implements OnInit, OnDestroy {
    			this.favorited = article.favorited;
    			this.favCount = article.favoritesCount;
    		})
-   		
    		console.log(_articles)
    	})
    }

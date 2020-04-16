@@ -4,11 +4,11 @@
   <div class="justify-content-between">
     <!-- <button routerLink="" class="btn  my-2 my-sm-0" type="submit">Home</button> -->
     <!-- <a routerLink="login">signupmnm</a> -->
-    <span *ngIf="!token">
+    <span *ngIf="!user">
     	<a routerLink="/signup" class="btn  my-2 my-sm-0" (click)="clickME()">Sign up</a>
     	<a routerLink="/signin" class="btn my-2 my-sm-0" (click)="clickME()">Sign in</a>
     </span>
-    <span *ngIf="token">
+    <span *ngIf="user">
     	<a  class="btn  my-2 my-sm-0" (click)="navToCreate()" ><span class="icons"><img src="../../../../assets/icons/add_new.png"  alt="">New Article</span></a>
     	<a routerLink="settings" class="btn  my-2 my-sm-0" > <span class="icons"><img src="../../../../assets/icons/gears.svg"  alt="settings">Settings</span></a>
     	<a routerLink="" class="btn  my-2 my-sm-0" routerLink="/profile"><span class="user icons"><img src="../../../../assets/icons/user.png">{{user}}</span></a>

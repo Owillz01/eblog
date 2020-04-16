@@ -59,7 +59,7 @@ subscribe : Subscription;
   	this.subscribe = this.articleService.getArticlesFeed()
   	.subscribe(_articles =>{
   		this.articles = _articles.articles;
-  		if(this.articles.length==0){
+  		if(this.articles.length <= 0){
   			this.noFeeds = true;
   		}
   		console.log(this.articles.length)

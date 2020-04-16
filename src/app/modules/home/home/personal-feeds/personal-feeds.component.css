@@ -1,4 +1,6 @@
-
+ng-template{
+	height: 95%;
+}
 .col-md-6.dp__container{
 	padding-right: 0px;
 	width: 100%

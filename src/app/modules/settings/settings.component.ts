@@ -2,9 +2,9 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { UpdateUser } from '../core/Models/UpdateUser.model'
+import { UpdateUser } from '../core/Models/UpdateUser.model';
 
-import { AuthService } from '../core/services/authService/auth.service'
+import { AuthService } from '../core/services/authService/auth.service';
 
 @Component({
   selector: 'app-settings',

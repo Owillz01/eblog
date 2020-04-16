@@ -15,6 +15,8 @@ import { ArticleService } from '../../core/services/articleService/article.servi
 export class HomeComponent implements OnInit {
 
   constructor( private articleService : ArticleService, private router : Router) { }
+  globalActive: boolean;
+  personalActive: boolean;
 
  subscribe : Subscription;
  articles ;
@@ -26,14 +28,18 @@ feeds : string ='global';
 
   globalFeeds(){
     this.feeds = 'global';
+    this.globalActive = true;
+    this.personalActive = false;
   }
 
   personalFeeds(){
     this.feeds = 'personal';
+    this.globalActive = false;
+    this.personalActive = true;
   }
 
   ngOnInit() {
-  	
+  	this.globalActive = true;
   }
 
   

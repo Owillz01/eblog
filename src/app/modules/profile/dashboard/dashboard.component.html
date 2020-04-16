@@ -1,38 +1,40 @@
-<section class="header__band">
-	<div class="container ">
-		<!-- <div class="row "> -->
-			<div class="dp">
-				<img src="../../../../assets/dp/dp.png">
-			</div>
-			<div class="username">
-				<p>{{user}}</p>
-			</div>
-		<!-- </div> -->
-	</div>
-</section>
-
-<section class="parent__container">
-	
-	<section class="body">
-		<div class="container">
-			<div class="row mt-5">
-				<!-- <div class="col-3"> -->
-					<button (click)='displayPersonalPosts()' >My Postss</button>
-				<!-- </div> -->
-				<!-- <div class="col-3"> -->
-					<button (click)='displayFavsPosts()' > Favorites</button>
-				<!-- </div> -->
-			</div>
-				<hr>
-			<!-- feeds here -->
-			<span *ngIf="isSelected=='favs' " >
-				<app-favorited></app-favorited>				
-			</span>
-			<span *ngIf="isSelected=='personal' " >
-				<app-my-posts></app-my-posts>			 
-			</span>
-			<!-- feeds ends here -->
-		
+<section class="height">
+	<section class="header__band">
+		<div class="container ">
+			<!-- <div class="row "> -->
+				<div class="dp">
+					<img src="../../../../assets/dp/dp.png">
+				</div>
+				<div class="username">
+					<p>{{user}}</p>
+				</div>
+			<!-- </div> -->
 		</div>
+	</section>
+
+	<section class="parent__container">
+		
+		<section class="body">
+			<div class="container">
+				<div class="row mt-5">
+					<!-- <div class="col-3"> -->
+						<button (click)='displayPersonalPosts()' [class.active]="myPost" >My Postss</button>
+					<!-- </div> -->
+					<!-- <div class="col-3"> -->
+						<button (click)='displayFavsPosts()' [class.active]="favorite" > Favorites</button>
+					<!-- </div> -->
+				</div>
+					<hr>
+				<!-- feeds here -->
+				<span *ngIf="isSelected=='favs' " >
+					<app-favorited></app-favorited>				
+				</span>
+				<span *ngIf="isSelected=='personal' " >
+					<app-my-posts></app-my-posts>			 
+				</span>
+				<!-- feeds ends here -->
+			
+			</div>
+		</section>
 	</section>
 </section>

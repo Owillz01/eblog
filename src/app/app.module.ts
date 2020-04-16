@@ -2,6 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { NgxSpinnerModule } from "ngx-spinner";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+ 
+import { ToastrModule } from 'ngx-toastr';
 // import {NgxPaginationModule} from 'ngx-pagination';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
@@ -30,7 +33,8 @@ import { SettingsModule } from './modules/settings/settings.module';
     NgbModule,
     SharedModule,
     NgxSpinnerModule,
-    // NgxPaginationModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({preventDuplicates: true,}),
     HomeModule,
     AuthModule,
     CoreModule,

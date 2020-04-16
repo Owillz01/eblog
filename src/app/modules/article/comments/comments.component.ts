@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { Subscription } from 'rxjs'
 
 import { ComServceService } from '../../core/services/comservice/com-servce.service';
@@ -15,9 +15,20 @@ export class CommentsComponent implements OnInit, OnDestroy {
 	user;
 	followed : boolean;
 	subscribe : Subscription;
-	slug : string;
+	slug : string; 
 	 p: number = 1;
-  constructor(private router : Router, private commentService : ComServceService, private activeRoute : ActivatedRoute ) { }
+  constructor(private router : Router, private commentService : ComServceService, private activeRoute : ActivatedRoute ) { 
+      this.router.routeReuseStrategy.shouldReuseRoute = function () {
+        return false;
+      };
+
+      this.subscribe = this.router.events.subscribe((event) => {
+        if (event instanceof NavigationEnd) {
+          // Trick the Router into believing it's last link wasn't previously loaded
+          this.router.navigated = false;
+        }
+      });
+  }
 
   navToUser(username){
        this.router.navigate(['/user', username])

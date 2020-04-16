@@ -45,7 +45,7 @@ private subscribe :Subscription;
 
    ngOnInit(){
   	 	this.loggedUser = localStorage.getItem('user')
-   		let _user = this.activeRoute .snapshot.params.username;
+   		let _user = this.activeRoute.snapshot.params.username;
    		this.subscribe = this.authService.getProfileByUsername(_user)
    		.subscribe(data => {
    			this.user = data.profile;
