@@ -8,6 +8,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 // import { AuthRoutingModule} from './auth.router.module'
 
+import { SharedModule } from '../shared/shared.module'
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { Routes, RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     RouterModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule
     // AuthRoutingModule
   ]
   // exports: [SignupComponent, LoginComponent]

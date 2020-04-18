@@ -8,6 +8,7 @@ import { ArticleComponent } from './article/article.component';
 import { NewcommentComponent } from './newcomment/newcomment.component';
 import { CommentsComponent } from './comments/comments.component';
 
+import { SharedModule } from '../shared/shared.module'
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { CommentsComponent } from './comments/comments.component';
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    SharedModule
   ]
 })
 export class ArticleModule { }

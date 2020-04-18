@@ -6,6 +6,9 @@ import { FavoritedComponent } from './dashboard/favorited/favorited.component';
 import { UsersComponent } from './users/users.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 
+
+import { SharedModule } from '../shared/shared.module'
+
 // import { SettingsComponent } from './settings/settings/settings.component';
 
 
@@ -14,7 +17,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
   declarations: [DashboardComponent, MyPostsComponent, FavoritedComponent, UsersComponent],
   imports: [
     CommonModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    SharedModule
   ]
 })
 export class ProfileModule { }

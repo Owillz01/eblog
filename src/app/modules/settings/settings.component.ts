@@ -56,14 +56,16 @@ export class SettingsComponent implements OnInit, OnDestroy {
 			formatedData.user.image = this.oldDetails.image
 		}
 
-		console.log(formatedData)
+		console.log('FORM DATA>>',formatedData)
 		this.subscribe = this.authService.updateCurrentUser(formatedData)
 		.subscribe(data =>{
-			if(data.user.token){
-				this.router.navigateByUrl('signin')
+			console.log('[updTED Data>>>>]',data)
+			
+			if(data.status == 200){
 				localStorage.removeItem('token');
+				this.router.navigateByUrl('signin')
 			}
-			console.log(data)
+			console.log('[updTED Data>>>>]',data)
 		})
 	}
 

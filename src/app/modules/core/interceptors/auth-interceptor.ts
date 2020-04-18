@@ -20,17 +20,14 @@ export class AuthInterceptor implements HttpInterceptor {
 		const token : string = localStorage.getItem('token')
    		let slug = this.activeRoute.snapshot.params.slug;
     const favUrl = `https://eblog-api.encentrals.com/api/articles/${slug}/favorite`;
-		if(token){ 
 			this.spinner.show()
+		if(token){ 
 			req = req.clone({headers: req.headers.set('Authorization', token)})
 			// let clonedREq = req.clone({headers: req.headers.set('Authorization', 'API '+token)})
 			console.log('token sent Rrequest', req)
 			// return next.handle(clonedREq)
 		}
-		if(req.url === favUrl){
-			// this.spinner.hide()
-			console.log(true)
-		}
+		
 			console.log('Not token sent Rrequest', req)
 			let reqMethod = req.method
 			// this.spinner.show()
@@ -38,11 +35,9 @@ export class AuthInterceptor implements HttpInterceptor {
 				
 
 					tap(  event =>{
-						console.log('[>>>>>Event]', event)
+						// console.log('[>>>>>Event]', event)
 						if(event instanceof HttpResponse){
-							// console.log()
-							console.log('event>>> ', event)
-							// if(event.b)
+						
 							this.spinner.hide()
 							this.toastr.success('Operaton Successful', 'sucess', {positionClass : 'toast-top-center' })
 						}
@@ -56,6 +51,8 @@ export class AuthInterceptor implements HttpInterceptor {
 								console.log('Error>>>', error)
 								// this.toastr.error(error.message, error.name, { positionClass: 'toast-bottom-center' });
 								try{
+										this.spinner.hide()
+
 									if(error.status === 422){
 										this.router.navigateByUrl('signin')
 									
@@ -70,6 +67,8 @@ export class AuthInterceptor implements HttpInterceptor {
 									}
 								}
 								catch(e){
+										this.spinner.hide()
+
 										this.toastr.error('An error occured. Please try again', '', {positionClass : 'toast-top-center'});
 										// this.toastr.success('Hello world!', 'Toastr fun!');
 									}

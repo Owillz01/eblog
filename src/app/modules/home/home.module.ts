@@ -9,12 +9,14 @@ import { PersonalFeedsComponent } from './home/personal-feeds/personal-feeds.com
 import { TagsComponent } from './home/tags/tags.component';
 
 
+import { SharedModule } from '../shared/shared.module'
 
 @NgModule({
   declarations: [HomeComponent, GlobalFeedsComponent, PersonalFeedsComponent, TagsComponent],
   imports: [
     CommonModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    SharedModule
   ]
 })
 export class HomeModule { }

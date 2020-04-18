@@ -4,6 +4,7 @@ import { NewArticleComponent } from './new-article/new-article.component';
 import { EditArticleComponent } from './edit-article/edit-article.component';
 import {ReactiveFormsModule} from '@angular/forms';
 
+import { SharedModule } from '../shared/shared.module'
 
 
 
@@ -11,7 +12,8 @@ import {ReactiveFormsModule} from '@angular/forms';
   declarations: [NewArticleComponent, EditArticleComponent],
   imports: [
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule
   ]
 })
 export class EditorModule { }

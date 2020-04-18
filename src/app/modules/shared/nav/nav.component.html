@@ -5,8 +5,8 @@
     <!-- <button routerLink="" class="btn  my-2 my-sm-0" type="submit">Home</button> -->
     <!-- <a routerLink="login">signupmnm</a> -->
     <span *ngIf="!user">
-    	<a routerLink="/signup" class="btn  my-2 my-sm-0" (click)="clickME()">Sign up</a>
-    	<a routerLink="/signin" class="btn my-2 my-sm-0" (click)="clickME()">Sign in</a>
+    	<a routerLink="/signup" class="btn  my-2 my-sm-0" >Sign up</a>
+    	<a routerLink="/signin" class="btn my-2 my-sm-0" >Sign in</a>
     </span>
     <span *ngIf="user">
     	<a  class="btn  my-2 my-sm-0" (click)="navToCreate()" ><span class="icons"><img src="../../../../assets/icons/add_new.png"  alt="">New Article</span></a>
