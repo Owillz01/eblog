@@ -50,11 +50,13 @@ h2{
 }
 img{
 	width: 100%;
+	cursor: pointer;
 }
 .username{
 	/*font-weight: bold;*/
 	font-size: 20px;
 	color: white;
+	cursor: pointer;
 	margin: 20px auto auto 10px;
 }
 .date{

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router'
+import { Router, ActivatedRoute } from '@angular/router'
 import { HttpInterceptor, HttpHandler, HttpRequest, HttpEvent, HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { Observable, of, pipe, throwError } from 'rxjs';
 import { NgxSpinnerService } from "ngx-spinner";
@@ -9,7 +9,7 @@ import { ToastrService } from 'ngx-toastr';
 @Injectable()
 
 export class AuthInterceptor implements HttpInterceptor {
-	constructor(private spinner : NgxSpinnerService, public toastr: ToastrService, private router : Router){}
+	constructor(private spinner : NgxSpinnerService, public toastr: ToastrService, private router : Router, private activeRoute : ActivatedRoute){}
 
 	handleError(error : HttpErrorResponse ){
 				console.log('[ERROR]>>>',error)
@@ -18,12 +18,18 @@ export class AuthInterceptor implements HttpInterceptor {
 			}
 	intercept(req : HttpRequest<any>, next : HttpHandler) : Observable<HttpEvent<any>>{
 		const token : string = localStorage.getItem('token')
-		this.spinner.show()
+   		let slug = this.activeRoute.snapshot.params.slug;
+    const favUrl = `https://eblog-api.encentrals.com/api/articles/${slug}/favorite`;
 		if(token){ 
+			this.spinner.show()
 			req = req.clone({headers: req.headers.set('Authorization', token)})
 			// let clonedREq = req.clone({headers: req.headers.set('Authorization', 'API '+token)})
 			console.log('token sent Rrequest', req)
 			// return next.handle(clonedREq)
+		}
+		if(req.url === favUrl){
+			// this.spinner.hide()
+			console.log(true)
 		}
 			console.log('Not token sent Rrequest', req)
 			let reqMethod = req.method
@@ -64,7 +70,7 @@ export class AuthInterceptor implements HttpInterceptor {
 									}
 								}
 								catch(e){
-										this.toastr.error('An error occured', '', {positionClass : 'toast-top-center'});
+										this.toastr.error('An error occured. Please try again', '', {positionClass : 'toast-top-center'});
 										// this.toastr.success('Hello world!', 'Toastr fun!');
 									}
 									console.log(error)

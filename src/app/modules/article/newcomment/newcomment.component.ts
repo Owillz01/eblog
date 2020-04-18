@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { ActivatedRoute }from '@angular/router';
-
+import { ActivatedRoute, Router }from '@angular/router';
+import { Subscription } from 'rxjs';
 import  { comment } from '../../core/Models/comment.model';
 import { ComServceService } from '../../core/services/comservice/com-servce.service'
 
@@ -10,10 +10,10 @@ import { ComServceService } from '../../core/services/comservice/com-servce.serv
   templateUrl: './newcomment.component.html',
   styleUrls: ['./newcomment.component.css']
 })
-export class NewcommentComponent implements OnInit {
+export class NewcommentComponent implements OnInit, OnDestroy {
 
-  constructor( private activeRoute : ActivatedRoute, private commentService : ComServceService) { }
-
+  constructor( private activeRoute : ActivatedRoute, private commentService : ComServceService, private router : Router) { }
+  subscribe : Subscription
   newComment = new FormGroup({
   	body : new FormControl('', Validators.required)
   })
@@ -21,16 +21,23 @@ export class NewcommentComponent implements OnInit {
   createArticleComment(data: comment){
   	let slug = this.activeRoute.snapshot.params.slug;
   	let formatedData = {'comment': data}
-  	this.commentService.createArticleComment(slug, formatedData)
+  	this.subscribe = this.commentService.createArticleComment(slug, formatedData)
   	.subscribe(data => {
+      this.router.navigate(['article', slug])
   		console.log(data)
-      this.ngOnInit()
+      
   	})
   	// console.log(slug)
   }
-
+  navToArticle(slug){
+     this.router.navigate(['article', slug])
+  }
   ngOnInit() {
   	
   }
-
+  ngOnDestroy(){
+    if(this.subscribe){
+      this.subscribe.unsubscribe()
+    }
+  }
 }

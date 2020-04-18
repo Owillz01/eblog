@@ -7,6 +7,7 @@ ng-template{
 }
 img{
 	width: 100%;
+	cursor: pointer;
 }
 .username{
 	font-weight: bold;
@@ -36,8 +37,11 @@ img{
 
 .read_more{
 	font-size: 14px;
-	color: grey;
+	color: #907cff;
 	cursor: pointer;
+}
+.read_more:hover{
+	border: 1px solid #907cff;
 }
 .tag__span{
 	align-self: center;

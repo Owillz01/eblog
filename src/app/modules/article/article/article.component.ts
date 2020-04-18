@@ -15,19 +15,12 @@ export class ArticleComponent implements OnInit, OnDestroy {
   article;
   subscribe : Subscription;
   isLogged:boolean = false;
-
- 
-  // getArticle(slug){
-  // 	this.subscribe = this.articleService.getArticle(slug)
-  // 	.subscribe( data => {
-  // 			this.article = data.article;
-  // 			console.log(this.article)
-  // 	})
-  // }
-
+  slug : string;
+  favorited : boolean;
+  favCount : number;
   editArticle(){
   	// this.articleService.getArticle()
-  	this.router.navigateByUrl('edit')
+  	this.router.navigate(['edit',this.slug])
   }
 
   deleteArticle(slug){
@@ -40,20 +33,22 @@ export class ArticleComponent implements OnInit, OnDestroy {
   	})
   }
 
-  navToEdit(){
-  	this.router.navigateByUrl('edit')
+  createArticleFavorite(slug){
+    this.subscribe = this.articleService.createArticleFavorite(slug)
+    .subscribe( data => {
+      this.favorited = true;
+      this.favCount++
+    })
   }
-  //  ngOnInit() {
-  //  	this.article = [this.articleService.article]
-  //  	let user = localStorage.getItem('user')
-  //  	// if(token == this.article.)
-  //  	this.article.forEach(data =>{
-  //  		if(user == data.article.author.username){
-  //  			this.isLogged = true;
-  //  		}
-  //  	})
-   	
-  // }
+
+  // DELETE fav
+  deleteArticleFavorite(slug){
+    this.subscribe = this.articleService.deleteArticleFavorite(slug)
+    .subscribe( data =>{
+      this.favorited = false;
+      this.favCount--
+    })
+  }
 
   navToUser(username){
        this.router.navigate(['/user', username])
@@ -61,15 +56,21 @@ export class ArticleComponent implements OnInit, OnDestroy {
 
   ngOnInit(){
     let user = localStorage.getItem('user');
-    let slug = this.activeRoute.snapshot.params.slug
-    this.subscribe = this.articleService.getArticle(slug)
+    this.slug = this.activeRoute.snapshot.params.slug
+    this.subscribe = this.articleService.getArticle(this.slug)
     .subscribe(data =>{
+
       this.article = [data];
-      console.log('this is the article', this.article)
+      // console.log('this is the article', this.article)
       this.article.map(data =>{
+          this.favCount = data.article.favoritesCount;
              if(user == data.article.author.username){
                console.log('user logged is', this.isLogged)
                this.isLogged = true;
+             }
+
+             if(data.article.favorited){
+               this.favorited = true;
              }
            })
       // console.log('this is the article', this.article)

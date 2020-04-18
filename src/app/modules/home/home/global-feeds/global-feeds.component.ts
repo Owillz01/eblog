@@ -22,37 +22,32 @@ export class GlobalFeedsComponent implements OnInit, OnDestroy {
   p: number = 1;
   favorited : boolean;
   navToArticle(slug){
-   // this.subscribe = this.articleService.getArticle(slug)
-   //  .subscribe( data => {
-   //    this.articleService.article = data;
-   //    if (this.articleService.article) {
-          this.router.navigate(['article', slug])
-    //   }
-    // })
+    this.router.navigate(['article', slug])
+
   }
 
-// VIEW USER'S DETAILS
+// VIEW USER'S DETAILS. naviage to selected user's profile page using Activated Router Snapshot.
+//this.router.Snapshot.params.username
 
   navToUser(username){
        this.router.navigate(['/user', username])
   }
 
   createArticleFavorite(slug){
-  	this.fav= true;
-  	console.log(this.fav, 'is selected')
+  	// this.articles.article.favorited = !this.articles.article.favorited
   	this.subscribe = this.articleService.createArticleFavorite(slug)
-  	.subscribe( data => console.log(data))
+  	.subscribe( data => this.router.navigateByUrl(''))
   }
 
   // DELETE fav
   deleteArticleFavorite(slug){
-  	this.fav= false;
-  	console.log(this.fav, 'is selected')
+    // this.router.navigateByUrl('')
   	this.subscribe = this.articleService.deleteArticleFavorite(slug)
-  	.subscribe( data => console.log(data))
+  	.subscribe( data => this.router.navigateByUrl(''))
   }
 
    ngOnInit() {
+      // this.router.routeReuseStrategy.shouldReuseRoute = () => {return false}
    	this.subscribe = this.articleService.getArticles()
    	.subscribe(_articles =>{
    		this.articles = _articles.articles;

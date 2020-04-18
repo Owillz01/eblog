@@ -14,6 +14,7 @@ export class FavoritedComponent implements OnInit, OnDestroy {
 
 subscribe : Subscription;
 favorited;
+p: number = 1;
   constructor( private articleService: ArticleService,  private router: Router) { }
 
   navToArticle(slug){
@@ -26,6 +27,19 @@ favorited;
       }
       // console.log(data)
     })
+  }
+
+  createArticleFavorite(slug){
+    // this.articles.article.favorited = !this.articles.article.favorited
+    this.subscribe = this.articleService.createArticleFavorite(slug)
+    .subscribe( data => this.router.navigateByUrl('/profile'))
+  }
+
+  // DELETE fav
+  deleteArticleFavorite(slug){
+    // this.router.navigateByUrl('')
+    this.subscribe = this.articleService.deleteArticleFavorite(slug)
+    .subscribe( data => this.router.navigateByUrl('/profile'))
   }
 
   ngOnInit() {

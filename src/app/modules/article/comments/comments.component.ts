@@ -18,16 +18,7 @@ export class CommentsComponent implements OnInit, OnDestroy {
 	slug : string; 
 	 p: number = 1;
   constructor(private router : Router, private commentService : ComServceService, private activeRoute : ActivatedRoute ) { 
-      this.router.routeReuseStrategy.shouldReuseRoute = function () {
-        return false;
-      };
-
-      this.subscribe = this.router.events.subscribe((event) => {
-        if (event instanceof NavigationEnd) {
-          // Trick the Router into believing it's last link wasn't previously loaded
-          this.router.navigated = false;
-        }
-      });
+     
   }
 
   navToUser(username){
@@ -38,6 +29,8 @@ export class CommentsComponent implements OnInit, OnDestroy {
   	this.commentService.deleteArticleComment(this.slug, id)
   	.subscribe(data => {
   		console.log(data)
+       this.router.navigate(['article', this.slug])
+       
   	})
   }
 
@@ -51,7 +44,7 @@ export class CommentsComponent implements OnInit, OnDestroy {
 	  		this.followed = comment.author.following;
 
   		})
-
+      this.router.routeReuseStrategy.shouldReuseRoute = () => {return false}
 	  	console.log('this slug is >>', this.comments)
   	})
   }

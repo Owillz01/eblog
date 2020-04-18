@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,7 +11,7 @@ export class DashboardComponent implements OnInit {
   myPost : boolean;
   favorite : boolean;
 	isSelected: string;
-  constructor() { }
+  constructor(private router : Router) { }
 
   displayFavsPosts(){
   	this.isSelected = 'favs'
@@ -26,6 +27,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
   	this.displayPersonalPosts()
+      this.router.routeReuseStrategy.shouldReuseRoute = () => {return false}
     
   	this.user = localStorage.getItem('user')
   }

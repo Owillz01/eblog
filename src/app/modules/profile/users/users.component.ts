@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 
@@ -9,13 +9,14 @@ import { AuthService } from '../../core/services/authService/auth.service';
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.css']
 })
-export class UsersComponent implements OnInit {
+export class UsersComponent implements OnInit, OnDestroy {
 
   constructor(private authService : AuthService, private activeRoute : ActivatedRoute) { }
 private user;
 private loggedUser;
 private followed: boolean;
 private subscribe :Subscription;
+private _user : boolean;
 
 	unfollowUserByUsername(username){
 		this.authService.unfollowUserByUsername(username)
@@ -46,13 +47,22 @@ private subscribe :Subscription;
    ngOnInit(){
   	 	this.loggedUser = localStorage.getItem('user')
    		let _user = this.activeRoute.snapshot.params.username;
+       this._user = false;
    		this.subscribe = this.authService.getProfileByUsername(_user)
    		.subscribe(data => {
-   			this.user = data.profile;
+   			 
+         this.user = data.profile;
    			console.log(this.user)
+         this._user = true;
    			this.followed = data.profile.following
    		})
    		   
+   }
+
+   ngOnDestroy(){
+     if(this.subscribe){
+       this.subscribe.unsubscribe();
+     }
    }
 
 }

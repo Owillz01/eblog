@@ -23,6 +23,7 @@ export class SettingsComponent implements OnInit, OnDestroy {
 	})
 	formatedData;
 	oldDetails;
+	loading : boolean;
 	subscribe : Subscription;
   constructor( private authService : AuthService, private router : Router) { }
 
@@ -73,11 +74,15 @@ export class SettingsComponent implements OnInit, OnDestroy {
 	}
 
   ngOnInit() {
+  	this.loading = true;
   	this.subscribe = this.authService.getCurrentUser()
   	.subscribe(data =>{
   		console.log(data)
   		this.oldDetails =data.user;
-  		console.log('old user', this.oldDetails)
+  		// console.log('old user', this.oldDetails)
+  		console.log('first loadiing state', this.loading)
+  		this.loading = false;
+  		console.log('second loadiing state', this.loading)
 
 
   	})

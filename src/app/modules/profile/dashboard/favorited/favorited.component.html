@@ -1,4 +1,4 @@
-<section *ngFor="let fav of favorited">
+<section *ngFor="let fav of favorited | paginate: { itemsPerPage: 20, currentPage: p }">
 	<div *ngIf="fav.favorited">
 		<div class="row" >
 			
@@ -18,8 +18,8 @@
 						</div>
 					</div>
 					<div class="col-md-1 span__favorite"  >
-						<!-- <span *ngIf="!article.favorited || fav " (click)="createArticleFavorite(article.slug)"><img src="../../../../assets/icons/love.svg" alt=""></span> -->
-						<span (click)="deleteArticleFavorite(article.slug)" ><img src="../../../../assets/icons/passion.svg" alt=""></span>
+						<span *ngIf="!fav.favorited" (click)="createArticleFavorite(fav.slug)"><img src="../../../../assets/icons/love.svg" alt=""></span>
+						<span *ngIf="fav.favorited" (click)="deleteArticleFavorite(fav.slug)" ><img src="../../../../assets/icons/passion.svg" alt=""></span>
 						<span>{{fav.favoritesCount}}</span>
 					</div>
 				</div>
@@ -46,3 +46,11 @@
 		
 	</div>
 </section>
+
+<pagination-controls 
+	(pageChange)="p = $event"
+	previousLabel=""
+	nextLabel=""
+	class="my-pagination"
+
+	></pagination-controls>

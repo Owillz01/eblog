@@ -20,8 +20,8 @@
 						</div>
 					</div>
 					<div class="col-md-1 span__favorite">
-						<span *ngIf="!article.favorited " ><img src="../../../../assets/icons/love.svg" alt=""></span>
-						<span *ngIf="article.favorited " ><img src="../../../../assets/icons/passion.svg" alt=""></span>
+						<span *ngIf="!article.favorited " (click)="createArticleFavorite(article.slug)" ><img src="../../../../assets/icons/love.svg" alt=""></span>
+						<span *ngIf="article.favorited " (click)="deleteArticleFavorite(article.slug)" ><img src="../../../../assets/icons/passion.svg" alt=""></span>
 						<span>{{article.favoritesCount}}</span>
 					</div>
 				</div>
@@ -35,7 +35,7 @@
 				</div>
 				<div class="row justify-content-between">
 					<div class="col-2 read_more">
-						<span (click)="navToArticle(article.slug)">Read More...</span>
+						<span (click)="navToArticle(article.slug)">Read More</span>
 					</div>
 					<div class="float-right" >
 						<span class="tag__span" *ngFor="let tag of article.tagList">{{tag}}</span> 

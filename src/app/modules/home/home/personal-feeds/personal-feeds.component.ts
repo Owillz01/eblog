@@ -19,42 +19,27 @@ subscribe : Subscription;
  noFeeds : boolean = false;
   p: number = 1;
 
- ex_navToUser(username){
-  // this.subscribe = this.authService.getProfileByUsername(username)
-  // .subscribe(data =>{
-  //   if(data){
-  //     this.authService.user = data.profile;
-  //     this.router.navigate(['/user', username])
-  //   }
-  //   console.log(data)
-  // })
-   //    this.router.navigate(['/user', username])
-
-   // console.log(username)
- }
-
  navToUser(username){
-
       this.router.navigate(['/user', username])
-      
  }
 
  navToArticle(slug){
 
      this.router.navigate(['article', slug])
  }
+ createArticleFavorite(slug){
+   // this.articles.article.favorited = !this.articles.article.favorited
+   this.subscribe = this.articleService.createArticleFavorite(slug)
+   .subscribe( data => this.router.navigateByUrl(''))
+ }
 
- // navToArticle(slug){
- //   this.articleService.getArticle(slug)
- //   .subscribe( data => {
- //     this.articleService.article = data;
- //     if (this.articleService.article) {
- //       // code...
- //         this.router.navigateByUrl('article')
- //     }
- //     // console.log(data)
- //   })
- // }
+ // DELETE fav
+ deleteArticleFavorite(slug){
+   // this.router.navigateByUrl('')
+   this.subscribe = this.articleService.deleteArticleFavorite(slug)
+   .subscribe( data => this.router.navigateByUrl(''))
+ }
+
   ngOnInit() {
   	this.subscribe = this.articleService.getArticlesFeed()
   	.subscribe(_articles =>{
@@ -67,6 +52,8 @@ subscribe : Subscription;
   }
 
   ngOnDestroy(){
-  	this.subscribe.unsubscribe()
+  	if(this.subscribe){
+      this.subscribe.unsubscribe()
+    }
   }
 }

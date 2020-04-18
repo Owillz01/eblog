@@ -39,6 +39,8 @@ feeds : string ='global';
   }
 
   ngOnInit() {
+      this.router.routeReuseStrategy.shouldReuseRoute = () => {return false}
+    
   	this.globalActive = true;
   }
 

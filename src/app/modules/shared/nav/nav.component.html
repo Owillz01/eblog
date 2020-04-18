@@ -10,9 +10,9 @@
     </span>
     <span *ngIf="user">
     	<a  class="btn  my-2 my-sm-0" (click)="navToCreate()" ><span class="icons"><img src="../../../../assets/icons/add_new.png"  alt="">New Article</span></a>
-    	<a routerLink="settings" class="btn  my-2 my-sm-0" > <span class="icons"><img src="../../../../assets/icons/gears.svg"  alt="settings">Settings</span></a>
-    	<a routerLink="" class="btn  my-2 my-sm-0" routerLink="/profile"><span class="user icons"><img src="../../../../assets/icons/user.png">{{user}}</span></a>
-    	<a class="btn  my-2 my-sm-0" routerLink="" (click)="logout()">Sign out</a>
+    	<a routerLink="/settings" class="btn  my-2 my-sm-0" > <span class="icons"><img src="../../../../assets/icons/gears.svg"  alt="settings">Settings</span></a>
+    	<a class="btn  my-2 my-sm-0" routerLink="/profile"><span class="user icons"><img src="../../../../assets/icons/user.png">{{user}}</span></a>
+    	<a class="btn  my-2 my-sm-0" (click)="logout()">Sign out</a>
     </span>
   </div>
 </nav>
