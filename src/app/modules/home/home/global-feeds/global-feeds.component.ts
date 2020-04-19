@@ -46,6 +46,12 @@ export class GlobalFeedsComponent implements OnInit, OnDestroy {
   	.subscribe( data => this.router.navigateByUrl(''))
   }
 
+  // getUserDetails(){
+  //   this.token = localStorage.getItem('token')
+  //   this.user = localStorage.getItem('user')
+  //   this.image = localStorage.getItem('image')
+  // }
+  
    ngOnInit() {
       // this.router.routeReuseStrategy.shouldReuseRoute = () => {return false}
    	this.subscribe = this.articleService.getArticles()

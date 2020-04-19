@@ -35,6 +35,7 @@ export class AuthService {
   updateCurrentUser(userData):Observable<any>{
     const url = `${this.baseUrl}/user`;
     return this.http.put(url, userData)
+    // return this.http.put(url, userData)
   }
 
   // GET USER'S PROFILE DETAILS

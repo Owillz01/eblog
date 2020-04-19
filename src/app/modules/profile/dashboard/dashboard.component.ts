@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 })
 export class DashboardComponent implements OnInit {
 	user;
+  image : string;
   myPost : boolean;
   favorite : boolean;
 	isSelected: string;
@@ -29,7 +30,8 @@ export class DashboardComponent implements OnInit {
   	this.displayPersonalPosts()
       this.router.routeReuseStrategy.shouldReuseRoute = () => {return false}
     
-  	this.user = localStorage.getItem('user')
+    this.user = localStorage.getItem('user')
+  	this.image = localStorage.getItem('image')
   }
 
 }

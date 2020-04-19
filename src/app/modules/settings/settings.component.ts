@@ -18,7 +18,7 @@ export class SettingsComponent implements OnInit, OnDestroy {
 		username : new FormControl(),
 		bio : new FormControl(),
 		email : new FormControl('', Validators.required),
-		password : new FormControl('', Validators.required),
+		password : new FormControl('', [Validators.required, Validators.minLength(6)]),
 		
 	})
 	formatedData;
@@ -59,9 +59,9 @@ export class SettingsComponent implements OnInit, OnDestroy {
 		console.log('FORM DATA>>',formatedData)
 		this.subscribe = this.authService.updateCurrentUser(formatedData)
 		.subscribe(data =>{
-			console.log('[updTED Data>>>>]',data)
+			// console.log('[updTED Data>>>>]',data)
 			
-			if(data.status == 200){
+			if(data.user.token){
 				localStorage.removeItem('token');
 				this.router.navigateByUrl('signin')
 			}

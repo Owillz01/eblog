@@ -1,7 +1,10 @@
 img{
 	width: 25px;
+	display: inline-flex;
 }
-
+.user{
+	width:40px;
+}
 .icons{
 	font-size: 10px;
 }

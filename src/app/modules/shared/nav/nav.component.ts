@@ -15,7 +15,8 @@ loggedIn;
    }
   token: string;
   user: string;
-
+  image: string;
+  public isMenuCollapsed = false;
   navToCreate(){
   	this.router.navigateByUrl('new')
   }
@@ -23,6 +24,7 @@ loggedIn;
   getUserDetails(){
     this.token = localStorage.getItem('token')
     this.user = localStorage.getItem('user')
+    this.image = localStorage.getItem('image')
   }
   // navToEdit(){
   // 	this.router.navigateByUrl('edit')

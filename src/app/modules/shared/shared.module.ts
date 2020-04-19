@@ -3,18 +3,20 @@ import { CommonModule } from '@angular/common';
 import { NavComponent } from './nav/nav.component';
 import { FooterComponent } from './footer/footer.component';
 import { Routes, RouterModule } from '@angular/router';
-
+import { NgbCollapse } from './collapse'
 
 
 
 @NgModule({
   declarations: [
   NavComponent, 
-  FooterComponent
+  FooterComponent,
+  NgbCollapse
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    
   ],
   exports:[
   	NavComponent,

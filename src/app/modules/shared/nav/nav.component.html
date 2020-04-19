@@ -1,20 +1,49 @@
-<!-- <ngx-headroom> -->
-<nav class="navbar navbar-light bg-light justify-content-between">
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light pl-5 pr-5 justify-content-between">
   <a class="navbar-brand" routerLink="">eBlog</a>
-  <div class="justify-content-between">
-    <!-- <button routerLink="" class="btn  my-2 my-sm-0" type="submit">Home</button> -->
-    <!-- <a routerLink="login">signupmnm</a> -->
-    <span *ngIf="!user">
-    	<a routerLink="/signup" class="btn  my-2 my-sm-0" >Sign up</a>
-    	<a routerLink="/signin" class="btn my-2 my-sm-0" >Sign in</a>
-    </span>
-    <span *ngIf="user">
-    	<a  class="btn  my-2 my-sm-0" (click)="navToCreate()" ><span class="icons"><img src="../../../../assets/icons/add_new.png"  alt="">New Article</span></a>
-    	<a routerLink="/settings" class="btn  my-2 my-sm-0" > <span class="icons"><img src="../../../../assets/icons/gears.svg"  alt="settings">Settings</span></a>
-    	<a class="btn  my-2 my-sm-0" routerLink="/profile"><span class="user icons"><img src="../../../../assets/icons/user.png">{{user}}</span></a>
-    	<a class="btn  my-2 my-sm-0" (click)="logout()">Sign out</a>
-    </span>
+
+  <!-- Step 3: Toggle the value of the property when the toggler button is clicked. -->
+  <button class="navbar-toggler" type="button" (click)="isMenuCollapsed = !isMenuCollapsed">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <!-- Step 2: Add the ngbCollapse directive to the element below. -->
+  <div [ngbCollapse]="isMenuCollapsed" class="navbar-collapse mr-sm-2 collapse">
+    <ul class="navbar-nav nav ml-auto" *ngIf="!user">
+        <li class="navbar-item">
+            <a  routerLink="/signup" class="btn nav-link my-2 my-sm-0" >Sign up</a>
+        </li>
+        <li class="navbar-item" >
+
+            <a  routerLink="/signin" class="btn nav-link my-2 my-sm-0" >Sign in</a>
+        </li>
+    </ul>
+    <ul class="navbar-nav ml-auto nav" *ngIf="user">
+
+      <!-- <span style="display: inline-flex;" > -->
+          <li class="nav-item">
+            <a   class="btn navbar-link  my-2 my-sm-0" (click)="navToCreate()" ><span class="icons nav-link"><img src="../../../../assets/icons/add_new.png"  alt="">New Article</span></a>
+            <!-- <a class="nav-link" [routerLink]="'.'" (click)="isMenuCollapsed = true">Examples</a> -->
+          </li>
+          <li class="nav-item">
+            <a  routerLink="/settings" class="btn navbar-link my-2 my-sm-0" > <span class="icons nav-link"><img src="../../../../assets/icons/gears.svg"  alt="settings">Settings</span></a>
+            <!-- <a class="nav-link" [routerLink]="'.'" (click)="isMenuCollapsed = true">About</a> -->
+          </li>
+          <li class="nav-item">
+            <a *ngIf="!image==''" routerLink="/profile" class="btn navbar-link my-2 my-sm-0" > 
+                <span class="icons nav-link"><img src="{{image}}"  alt="profile">{{user}}</span>
+            </a>
+            <a *ngIf="image==''" routerLink="/profile" class="btn navbar-link my-2 my-sm-0" >
+             <span class="icons nav-link"><img src="../../../../assets/icons/user.png"  alt="profile">{{user}}</span>
+            </a>
+            <!-- <a class="nav-link" [routerLink]="'.'" (click)="isMenuCollapsed = true">About</a> -->
+          </li>
+          
+          <li class="nav-item">
+            <a class="btn navbar-link my-2 my-sm-0" (click)="logout()" > Sign Out</a>
+            <!-- <a class="nav-link" [routerLink]="'.'" (click)="isMenuCollapsed = true">About</a> -->
+          </li>
+      <!-- </span> -->
+    </ul>
   </div>
 </nav>
-<!-- </ngx-headroom> -->
-<!-- <a routerLink="login">signupmnm</a>a -->

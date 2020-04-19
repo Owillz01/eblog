@@ -1,12 +1,12 @@
 <section class="newcomment float-right">
 	<div class="container">
 		<div class="row">	
-			<div class="col-md-12">
+			<div class="col-md-12"> 
 				<form [formGroup]="newComment" (ngSubmit)="createArticleComment(newComment.value)">
-					<div class="form-group">
+					<div class="form-group"><span style="color: red">*</span>
 					   <textarea class="form-control" formControlName="body" rows="7" cols="50" required></textarea>
 					 </div>
-					<input type="submit" value="Post" class="btn btn-primary float-right">
+					<input type="submit" [disabled]="!newComment.valid" value="Post" class="btn btn-primary float-right">
 				</form>
 			</div>
 		</div>

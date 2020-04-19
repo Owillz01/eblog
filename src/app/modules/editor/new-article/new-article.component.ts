@@ -21,7 +21,7 @@ export class NewArticleComponent implements OnInit, OnDestroy {
 
   newArticle = new FormGroup({
   	title : new FormControl('', Validators.required),
-  	description : new FormControl('', Validators.required),
+  	description : new FormControl(),
   	tags : new FormControl(),
   	body : new FormControl('', Validators.required),
   })
