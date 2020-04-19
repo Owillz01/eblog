@@ -1,11 +1,11 @@
 .sidebar{
-	max-width: 20%;
+	/*max-width: 20%;*/
 	background: #eaeaea;
 	padding: 30px 10px;
 }
 
 .body{
-	max-width: 75%;
+	/*max-width: 75%;*/
 	/*height: 95%;*/
 }
 

@@ -13,79 +13,41 @@
 </section>
 
 <section class="parent__container">
-	<aside class="sidebar float-right text-center">
-		<app-tags></app-tags>
-		
-	</aside>
-	<section class="body">
-		<div class="container">
-			<div class="row mt-5">
-				<!-- <div class="col-3"> -->
-					<button (click)="personalFeeds()"  [class.active]="personalActive">Your Feeds</button>
-				<!-- </div> -->
-				<!-- <div class="col-3"> -->
-					<button (click)="globalFeeds()" [class.active]="globalActive"> Global Feed</button>
-				<!-- </div> -->
-			</div>
-				<hr>
-			<!-- feeds here -->
-			<span *ngIf="feeds=='personal'">
-				
-				<personal-feeds></personal-feeds>
-			</span>
-			<span  *ngIf="feeds=='global'">
-				
-			 <global-feeds></global-feeds>
-			</span>
-			<!-- feeds ends here -->
-		
-		</div>
-	</section>
-</section>
-
-
-<!-- <div *ngFor="let article of articles">
 	<div class="row">
-		
-		<div class="col">
-			<div class="row justify-content-between">
-				<div class="col-2">
-					<div class="row">
-						<div class="col-md-6 dp__container"> 
-							<img src="../../../assets/dp/dp.png" alt="display picture" class=".dp__img"> 
-						</div>
-						
-								<span>
-									<p class="username">{{article.author.username}}</p>
-									<p class="date">{{article.createdAt  | date : "mediumDate" }}</p>
-								</span>
-							
-					</div>
-				</div>
-				<div class="col-md-1 span__favorite">
-					<span *ngIf="!article.favorited " ><img src="../../../../assets/icons/love.svg" alt=""></span>
-					<span *ngIf="article.favorited " ><img src="../../../../assets/icons/passion.svg" alt=""></span>
-					<span>{{article.favoritesCount}}</span>
-				</div>
-			</div>
-			<div class="row justify-content-between">
-				<div class="col-md-8">
-					<h3>{{article.title}}</h3>
-					<p class="article__body"> {{article.body}}
-					</p>
-				</div>
+		<div class="col-md-3 mt-5">
+			<aside class="sidebar float-right text-center">
+				<app-tags></app-tags>
 				
-			</div>
-			<div class="row justify-content-between">
-				<div class="col-2 read_more">
-					<span (click)="navToArticle(article.slug)">Read More...</span>
-				</div>
-				<div class="float-right" >
-					<span class="tag__span" *ngFor="let tag of article.tagList">{{tag}}</span> 
-
-				</div>
-			</div>
+			</aside>
 		</div>
+		<div class="col-md-9 order-lg-first">
+			<section class="body">
+				<div class="container">
+					<div class="row mt-5">
+						<!-- <div class="col-3"> -->
+							<button (click)="personalFeeds()"  [class.active]="personalActive">Your Feeds</button>
+						<!-- </div> -->
+						<!-- <div class="col-3"> -->
+							<button (click)="globalFeeds()" [class.active]="globalActive"> Global Feed</button>
+						<!-- </div> -->
+					</div>
+						<hr>
+					<!-- feeds here -->
+					<span *ngIf="feeds=='personal'">
+						
+						<personal-feeds></personal-feeds>
+					</span>
+					<span  *ngIf="feeds=='global'">
+						
+					 <global-feeds></global-feeds>
+					</span>
+					<!-- feeds ends here -->
+				
+				</div>
+			</section>
+		</div>
+		
 	</div>
-	<hr>
-</div> -->
+	
+	
+</section>

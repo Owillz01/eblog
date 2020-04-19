@@ -16,7 +16,7 @@ loggedIn;
   token: string;
   user: string;
   image: string;
-  public isMenuCollapsed = false;
+  public isMenuCollapsed = true;
   navToCreate(){
   	this.router.navigateByUrl('new')
   }

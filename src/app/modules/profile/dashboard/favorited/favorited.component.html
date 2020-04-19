@@ -19,7 +19,7 @@
 								
 						</div>
 					</div>
-					<div class="col-md-1 span__favorite"  >
+					<div class="col-xs-1 span__favorite"  >
 						<span *ngIf="!fav.favorited" (click)="createArticleFavorite(fav.slug)"><img src="../../../../assets/icons/love.svg" alt=""></span>
 						<span *ngIf="fav.favorited" (click)="deleteArticleFavorite(fav.slug)" ><img src="../../../../assets/icons/passion.svg" alt=""></span>
 						<span>{{fav.favoritesCount}}</span>
