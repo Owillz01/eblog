@@ -10,6 +10,7 @@ import {EditArticleComponent } from './modules/editor/edit-article/edit-article.
 import { ArticleComponent } from './modules/article/article/article.component';
 import { SettingsComponent } from './modules/settings/settings.component';
 import { UsersComponent } from './modules/profile/users/users.component';
+import { ErrorComponent } from './error/error.component'
 
 const routes: Routes = [
 	{path: '', component : HomeComponent},
@@ -20,7 +21,8 @@ const routes: Routes = [
 	{path: 'profile', component : DashboardComponent},
 	{path: 'article/:slug', component: ArticleComponent},
 	{path: 'settings', component: SettingsComponent},
-	{path: 'user/:username', component: UsersComponent}
+	{path: 'user/:username', component: UsersComponent},
+	{path: '**', component: ErrorComponent}
 
 
 ];

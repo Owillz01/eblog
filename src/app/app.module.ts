@@ -21,10 +21,12 @@ import { ProfileModule } from './modules/profile/profile.module';
 import { ArticleModule } from './modules/article/article.module';
 import { EditorModule } from './modules/editor/editor.module';
 import { SettingsModule } from './modules/settings/settings.module';
+import { ErrorComponent } from './error/error.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    ErrorComponent,
     // NavComponent
   ],
   imports: [
