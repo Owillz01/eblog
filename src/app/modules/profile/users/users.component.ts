@@ -12,11 +12,11 @@ import { AuthService } from '../../core/services/authService/auth.service';
 export class UsersComponent implements OnInit, OnDestroy {
 
   constructor(private authService : AuthService, private activeRoute : ActivatedRoute) { }
-private user;
-private loggedUser;
-private followed: boolean;
+user;
+ loggedUser;
+followed: boolean;
 private subscribe :Subscription;
-private _user : boolean;
+ _user : boolean;
 
 	unfollowUserByUsername(username){
 		this.authService.unfollowUserByUsername(username)

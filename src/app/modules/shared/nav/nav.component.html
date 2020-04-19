@@ -30,10 +30,10 @@
             <!-- <a class="nav-link" [routerLink]="'.'" (click)="isMenuCollapsed = true">About</a> -->
           </li>
           <li class="nav-item">
-            <a *ngIf="!image==''" routerLink="/profile" class="btn navbar-link my-2 my-sm-0" > 
+            <a *ngIf="image" routerLink="/profile" class="btn navbar-link my-2 my-sm-0" > 
                 <span class="icons nav-link"><img src="{{image}}"  alt="profile">{{user}}</span>
             </a>
-            <a *ngIf="image==''" routerLink="/profile" class="btn navbar-link my-2 my-sm-0" >
+            <a *ngIf="!image" routerLink="/profile" class="btn navbar-link my-2 my-sm-0" >
              <span class="icons nav-link"><img src="../../../../assets/icons/user.png"  alt="profile">{{user}}</span>
             </a>
             <!-- <a class="nav-link" [routerLink]="'.'" (click)="isMenuCollapsed = true">About</a> -->

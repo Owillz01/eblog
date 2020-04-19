@@ -8,7 +8,7 @@
 			<p  class="username">{{comment.author.username}}</p>
 			<p class="date"> {{comment.createdAt | date : 'mediumDate'}} </p>
 			<div *ngIf="user != comment.author.username">
-				<button class="follow" *ngIf="!follow"> follow</button>
+				<button class="follow" *ngIf="!followed"> follow</button>
 				<button class="unfollow" *ngIf="followed"> unfollow</button>
 			</div>
 			<button class="delete" (click)="deleteArticleComment(comment.id)" *ngIf="user == comment.author.username" > Delete</button>

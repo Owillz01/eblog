@@ -5,8 +5,8 @@
 			<!-- <div class="row "> -->
 				<div class="dp">
 					<!-- <img src="../../../../assets/dp/dp.png"> -->
-					<span *ngIf="image==''"><img src="../../../../assets/icons/user.png"></span>
-					<span *ngIf="!image==''"><img src="{{image}}"></span>
+					<span *ngIf="!image"><img src="../../../../assets/icons/user.png"></span>
+					<span *ngIf="image"><img src="{{image}}"></span>
 				</div>
 				<div class="username">
 					<p>{{user}}</p>

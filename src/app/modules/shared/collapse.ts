@@ -12,5 +12,5 @@ export class NgbCollapse {
   /**
    * If `true`, will collapse the element or show it otherwise.
    */
-  @Input('ngbCollapse') collapsed = false;
+  @Input('ngbCollapse') collapsed = true;
 }

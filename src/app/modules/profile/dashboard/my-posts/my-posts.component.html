@@ -10,8 +10,8 @@
 							<div class="row">
 								<div class="col-md-6 dp__container"> 
 									<!-- <img src="../../../assets/dp/dp.png" alt="display picture" class=".dp__img">  -->
-									<span *ngIf="post.author.image==''"><img src="../../../../assets/icons/user.png"></span>
-									<span *ngIf="!post.author.image==''"><img src="{{post.author.image}}"></span>
+									<span *ngIf="!post.author.image"><img src="../../../../assets/icons/user.png"></span>
+									<span *ngIf="post.author.image"><img src="{{post.author.image}}"></span>
 								</div>
 								
 										<span>
